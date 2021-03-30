@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\postsController;
-
+use App\Http\Controllers\commentsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,4 +22,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::resource('/posts', postsController::class);
+Route::resource('/comment', commentsController::class);
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
