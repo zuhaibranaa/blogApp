@@ -15,7 +15,7 @@
     <li>
     In the .env file, add database information to allow Laravel to connect to the database
     </li>
-    <p align="center"><strong>In the .env file fill in the DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, and DB_PASSWORD options to match the credentials of the database you just created. </strong></p>
+    <p>In the .env file fill in the DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, and DB_PASSWORD options to match the credentials of the database you just created.</p>
     <li>Migrate the database using</li>
     <p align="center"><strong>php artisan migrate</strong></p>
 </ol>
