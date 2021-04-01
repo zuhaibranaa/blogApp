@@ -117,7 +117,7 @@ font-awesome.min.css">
                             @endif
                         @else
                         <li class="nav-item">
-                            <a class="nav-link" href="dashboard"><svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>  Dashboard</a>
+                            <a class="nav-link" href="/dashboard"><svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>  Dashboard</a>
                         </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

@@ -3,20 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\post;
-use App\Models\User;
 
-class postsController extends Controller
+class profileController extends Controller
 {
-    // /**
-    //  * Create a new controller instance.
-    //  *
-    //  * @return void
-    //  */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    /**
+   * Create a new controller instance.
+   *
+   * @return void
+   */
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
     /**
      * Display a listing of the resource.
      *
@@ -24,9 +22,7 @@ class postsController extends Controller
      */
     public function index()
     {
-        $id = auth()->user()->id;
-        $pos = post::where('author_id', $id)->get();
-        return view('posts')->with('pos', $pos);
+        return view('profile');
     }
 
     /**
@@ -36,7 +32,7 @@ class postsController extends Controller
      */
     public function create()
     {
-        return view('posts/create');
+        //
     }
 
     /**
@@ -58,8 +54,7 @@ class postsController extends Controller
      */
     public function show($id)
     {
-        $pos = post::find($id);
-        return view('/posts/post')->with('pos', $pos);
+        //
     }
 
     /**
@@ -93,8 +88,6 @@ class postsController extends Controller
      */
     public function destroy($id)
     {
-        $post = post::find($id);
-        $post->delete();
-        return view('/posts');
+        //
     }
 }

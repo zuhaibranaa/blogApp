@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\postsController;
 use App\Http\Controllers\commentsController;
+use App\Http\Controllers\profileController;
+use App\Models\post;
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,13 +18,14 @@ use App\Http\Controllers\commentsController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $pos = post::all();
+    return view('welcome')->with('pos', $pos);
 });
 
-// Route::resource('dashboard', dashboardController::class);
 
 Auth::routes();
 
 Route::resource('/posts', postsController::class);
+Route::resource('/profile', profileController::class);
 Route::resource('/comment', commentsController::class);
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
