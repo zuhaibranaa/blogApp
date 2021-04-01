@@ -22,7 +22,7 @@ class commentsController extends Controller
      */
     public function index()
     {
-        //
+        return view('comments');
     }
 
     /**
