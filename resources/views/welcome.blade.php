@@ -1,37 +1,37 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="d-flex justify-content-between">
-                <div class="p-2">
-                    <h2>All Posts</h2>
-                </div>
-                <div class="p-2"></div>
+
+<div class="row">
+    @foreach($pos as $post => $id)
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-header">
+                <h4>
+                    <a href="/posts/{{$id['id']}}">{{$id['title']}}</a>
+                </h4>
             </div>
-            <div class="card-columns">
-                @foreach($pos as $post => $id)
 
-
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title"><a href="/posts/{{$id['id']}}">{{$id['title']}}</a>
-                        </h4>
-                        <p class="card-text"><small class="text-muted"><a
-                                    href="http://127.0.0.1:8001/users/1">Anakin</a></small></p>
-                        <p class="card-text"><small class="text-muted">{{$id['posted_at']}}</small><br>
-                            <small class="text-muted"><i aria-hidden="true" class="fa fa-comments-o"></i> 1
-                                <span><i aria-hidden="true" class="fa ml-2 fa-heart-o" style="user-select: none;"></i> 0
-                                </span></small>
-                        </p>
-                    </div>
-                </div>
-                @endforeach
-
+            <div class="card-body">
+                <p class="card-text"><small class="text-muted"><a
+                            href="http://127.0.0.1:8001/users/1">Anakin</a></small>
+                    <small class="text-muted">
+                        <i aria-hidden="true" class="fa fa-comments-o"></i> 1
+                        <span>
+                            <i aria-hidden="true" class="fa ml-2 fa-heart-o" style="user-select: none;"></i> 0
+                        </span>
+                    </small>
+                </p>
             </div>
-            <div class="d-flex justify-content-center"></div>
+            <div class="card-footer">
+                <p class="card-text">
+                    <small class="text-muted">{{date_format(date_create($id['posted_at']),'l d F Y g :i a')}}</small>
+                    <br>
+
+                </p>
+            </div>
         </div>
     </div>
+    @endforeach
 </div>
 @endsection

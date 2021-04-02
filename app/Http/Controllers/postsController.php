@@ -47,7 +47,13 @@ class postsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = new post;
+        $post->title = $request['title'];
+        $post->author_id = auth()->user()->id;
+        $post->posted_at = $request['posted_at'];
+        $post->content = $request['body'];
+        $post->save();
+        return view('/dashboard');
     }
 
     /**
@@ -95,6 +101,6 @@ class postsController extends Controller
     {
         $post = post::find($id);
         $post->delete();
-        return view('/posts');
+        return 123;
     }
 }

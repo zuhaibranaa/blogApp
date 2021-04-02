@@ -14,11 +14,23 @@
             </span></p>
     </div>
     <h2 class="mt-2">1 comment</h2>
+    @if(Auth::check())
+    <div>
+        <div class="form-group"><textarea placeholder="Your comment" class="form-control"></textarea>
+            <!---->
+        </div>
+        <div class="form-group text-right"><button disabled="disabled" class="btn btn-primary">
+                <!---->
+                Comment
+            </button></div>
+    </div>
+    @else
     <div role="alert" class="alert alert-warning alert-dismissible">
 
 
         You must be signed in to comment.
     </div>
+    @endif
     <div>
         <div class="card mb-2">
             <div class="card-body">
