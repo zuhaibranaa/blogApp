@@ -29,8 +29,8 @@
                         @foreach($pos as $post => $id)
                         <tr>
                             <td><a href="#">{{$id['title']}}</a></td>
-                            <td><a href="#">Muhammad Zuhaib Shabbir</a></td>
-                            <td>{{$id['posted_at']}}</td>
+                            <td><a href="#">{{Auth::user()->name}}</a></td>
+                            <td>{{date_format(date_create($id['posted_at']),'l d F Y g :i a')}}</td>
                             <td><span class="badge badge-pill badge-secondary">1</span></td>
                             <td><span class="badge badge-pill badge-secondary">0</span></td>
                             <td>

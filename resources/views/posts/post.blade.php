@@ -5,7 +5,7 @@
     <div class="bg-white p-3 post-card">
         <h1>{{$pos['title']}}</h1>
         <div class="mb-3"><small class="text-muted"><a href="/users/1">Anakin</a></small>,
-            <small class="text-muted">{{$pos['posted_at']}}</small>
+            <small class="text-muted">{{date_format(date_create($pos['posted_at']),'l d F Y g :i a')}}</small>
         </div>
         <div class="post-content">
             {{$pos['content']}}

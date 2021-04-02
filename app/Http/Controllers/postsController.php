@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\post;
 use App\Models\User;
 
+
 class postsController extends Controller
 {
     // /**
@@ -24,8 +25,8 @@ class postsController extends Controller
      */
     public function index()
     {
-        $id = auth()->user()->id;
-        $pos = post::where('author_id', $id)->get();
+        $user = auth()->user()->id;
+        $pos = post::where('author_id', $user)->get();
         return view('posts')->with('pos', $pos);
     }
 
@@ -36,7 +37,7 @@ class postsController extends Controller
      */
     public function create()
     {
-        return view('posts/create');
+        return view('posts.create');
     }
 
     /**
@@ -47,13 +48,14 @@ class postsController extends Controller
      */
     public function store(Request $request)
     {
+        $user = auth()->user()->id;
         $post = new post;
         $post->title = $request['title'];
-        $post->author_id = auth()->user()->id;
+        $post->author_id = $user;
         $post->posted_at = $request['posted_at'];
         $post->content = $request['body'];
         $post->save();
-        return view('/dashboard');
+        return view('dashboard');
     }
 
     /**
@@ -65,7 +67,7 @@ class postsController extends Controller
     public function show($id)
     {
         $pos = post::find($id);
-        return view('/posts/post')->with('pos', $pos);
+        return view('posts.post')->with('pos', $pos);
     }
 
     /**
@@ -76,7 +78,15 @@ class postsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = auth()->user()->id;
+        $post = post::find($id);
+        $a = $post['author_id'];
+        $author = User::find($a);
+        if ($post['author_id'] == $user) {
+            return view('posts.edit')->with('post', $post)->with('author', $author['name']);
+        } else {
+            return view('errorPermission');
+        }
     }
 
     /**
@@ -88,7 +98,11 @@ class postsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = post::find($id);
+        $post->title = $request['title'];
+        $post->content = $request['body'];
+        $post->save();
+        return view('/dashboard');
     }
 
     /**
@@ -101,6 +115,6 @@ class postsController extends Controller
     {
         $post = post::find($id);
         $post->delete();
-        return 123;
+        return view('dashboard');
     }
 }
