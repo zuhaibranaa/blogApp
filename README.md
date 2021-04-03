@@ -7,7 +7,7 @@
     <p align="center"><strong>git clone zuhaibranaa/blogApp</strong></p>
     <li>cd into project directory</li>
     <li>Install Dependencies using Following Command</li>
-    <p align="center"><strong>composer install && npm install</strong></p>
+    <p align="center"><strong>composer install && npm install && npm run dev</strong></p>
     <li>Create a copy of your .env file using</li>
     <p align="center"><strong>cp .env.example .env</strong></p>
     <li>Generate an app encryption key</li>
