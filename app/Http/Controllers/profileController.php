@@ -3,18 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\post;
+use App\Models\User;
 
 class profileController extends Controller
 {
-    /**
-   * Create a new controller instance.
-   *
-   * @return void
-   */
-  public function __construct()
-  {
-      $this->middleware('auth');
-  }
     /**
      * Display a listing of the resource.
      *
@@ -54,7 +47,12 @@ class profileController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = user::find($id);
+        if ($user == NULL) {
+            return view('error')->with('message', 'No User Found');
+        } else {
+            return view('pprofile')->with('user', $user);
+        }
     }
 
     /**

@@ -19,12 +19,10 @@ use App\Models\User;
 
 Route::get('/', function () {
     $pos = post::all();
-    return view('welcome')->with('pos', $pos);
+    $u = User::all();
+    return view('welcome')->with('pos', $pos)->with('u', $u);
 });
-
-
 Auth::routes();
-
 Route::resource('/posts', postsController::class);
 Route::resource('/profile', profileController::class);
 Route::resource('/comment', commentsController::class);

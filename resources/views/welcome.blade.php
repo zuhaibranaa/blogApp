@@ -4,6 +4,7 @@
 
 <div class="row">
     @foreach($pos as $post => $id)
+
     <div class="col-sm-4">
         <div class="card">
             <div class="card-header">
@@ -13,8 +14,15 @@
             </div>
 
             <div class="card-body">
-                <p class="card-text"><small class="text-muted"><a
-                            href="http://127.0.0.1:8001/users/1">Anakin</a></small>
+                <p class="card-text"><small class="text-muted"><a href="/profile/{{$id['author_id']}}">
+                            @foreach($u as $use => $user)
+                            @if($user['id'] == $id['author_id'])
+
+                            {{$user['name']}}
+
+                            @endif
+                            @endforeach
+                        </a></small>
                     <small class="text-muted">
                         <i aria-hidden="true" class="fa fa-comments-o"></i> 1
                         <span>

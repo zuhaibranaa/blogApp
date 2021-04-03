@@ -4,7 +4,7 @@
 <div class="col-md-12">
     <div class="bg-white p-3 post-card">
         <h1>{{$pos['title']}}</h1>
-        <div class="mb-3"><small class="text-muted"><a href="/users/1">Anakin</a></small>,
+        <div class="mb-3"><small class="text-muted"><a href="/users/{{$pos['author_id']}}">{{$user}}</a></small>,
             <small class="text-muted">{{date_format(date_create($pos['posted_at']),'l d F Y g :i a')}}</small>
         </div>
         <div class="post-content">
@@ -35,7 +35,7 @@
         <div class="card mb-2">
             <div class="card-body">
                 <div class="card-title d-flex justify-content-between">
-                    <h6><a href="http://127.0.0.1:8001/users/1">anakin</a></h6>
+                    <h6><a href="/profile/1">anakin</a></h6>
                     <!---->
                 </div>
                 <p class="card-text">

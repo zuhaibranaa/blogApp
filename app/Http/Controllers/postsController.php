@@ -67,7 +67,9 @@ class postsController extends Controller
     public function show($id)
     {
         $pos = post::find($id);
-        return view('posts.post')->with('pos', $pos);
+        $a = $pos['author_id'];
+        $author = User::find($a);
+        return view('posts.post')->with('pos', $pos)->with('user', $author['name']);
     }
 
     /**
@@ -85,7 +87,7 @@ class postsController extends Controller
         if ($post['author_id'] == $user) {
             return view('posts.edit')->with('post', $post)->with('author', $author['name']);
         } else {
-            return view('errorPermission');
+            return view('error')->with('message', 'Permission Denied');
         }
     }
 

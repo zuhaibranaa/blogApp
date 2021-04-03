@@ -12,4 +12,12 @@ class post extends Model
     {
         return $this->belongsTo->user();
     }
+    public function like()
+    {
+        return $this->hasMany->like();
+    }
+    public function comment()
+    {
+        return $this->hasMany->comment();
+    }
 }
