@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\post;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class profileController extends Controller
 {
@@ -15,7 +16,8 @@ class profileController extends Controller
      */
     public function index()
     {
-        return view('profile');
+        $user = user::find(auth()->user()->id);
+        return view('profile')->with('user', $user);
     }
 
     /**
@@ -48,22 +50,12 @@ class profileController extends Controller
     public function show($id)
     {
         $user = user::find($id);
+        $pos = post::where('author_id', $id)->get();
         if ($user == NULL) {
             return view('error')->with('message', 'No User Found');
         } else {
-            return view('pprofile')->with('user', $user);
+            return view('pprofile')->with('user', $user)->with('pos', $pos);
         }
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
@@ -73,9 +65,15 @@ class profileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $id = auth()->user()->id;
+        $u = User::find($id);
+        $u->name = $request['name'];
+        $u->email = $request['email'];
+        $u->password = Hash::make($request['password']);
+        $u->save();
+        return view('dashboard');
     }
 
     /**

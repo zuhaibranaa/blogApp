@@ -16,7 +16,7 @@
                                         0
                                     </div>
                                     <div class="col-md-4"><span class="text-muted d-block">Posts</span>
-                                        2
+                                        {{count($pos)}}
                                     </div>
                                     <div class="col-md-4"><span class="text-muted d-block">Likes</span>
                                         0
@@ -36,16 +36,6 @@
                             <div class="card-body">
                                 <h4 class="card-title"><a href="http://127.0.0.1:8001/posts/asdasda">asdasda</a></h4>
                                 <p class="card-text"><small class="text-muted">01 April 2021, 22:02</small><br> <small
-                                        class="text-muted"><i aria-hidden="true" class="fa fa-comments-o"></i> 0
-                                        <i aria-hidden="true" class="fa fa-heart-o ml-2"></i> 1
-                                    </small></p>
-                            </div>
-                        </div>
-                        <div class="card mb-2">
-                            <div class="card-body">
-                                <h4 class="card-title"><a href="http://127.0.0.1:8001/posts/hello-world">Hello World</a>
-                                </h4>
-                                <p class="card-text"><small class="text-muted">01 April 2021, 11:23</small><br> <small
                                         class="text-muted"><i aria-hidden="true" class="fa fa-comments-o"></i> 0
                                         <i aria-hidden="true" class="fa fa-heart-o ml-2"></i> 1
                                     </small></p>
