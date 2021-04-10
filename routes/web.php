@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\postsController;
 use App\Http\Controllers\commentsController;
 use App\Http\Controllers\profileController;
+use App\Http\Controllers\likesController;
 use App\Models\post;
 use App\Models\User;
 /*
@@ -24,6 +25,7 @@ Route::get('/', function () {
 });
 Auth::routes();
 Route::resource('/posts', postsController::class);
+Route::resource('/likes', likesController::class);
 Route::resource('/profile', profileController::class);
 Route::resource('/comment', commentsController::class);
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');

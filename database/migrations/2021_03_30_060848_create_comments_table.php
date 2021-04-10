@@ -22,7 +22,7 @@ class CreateCommentsTable extends Migration
             $table->unsignedBigInteger('post_author_id');
             $table->foreign('post_author_id')->references('id')->on('users')->onDelete('cascade');
             $table->text('content');
-            $table->datetime('posted_at');
+            $table->datetime('posted_at')->useCurrent = true;
             $table->timestamps();
         });
     }

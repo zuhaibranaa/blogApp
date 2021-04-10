@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\post;
 use App\Models\User;
+use App\Models\comment;
 
 
 class postsController extends Controller
@@ -67,9 +68,9 @@ class postsController extends Controller
     public function show($id)
     {
         $pos = post::find($id);
-        $a = $pos['author_id'];
-        $author = User::find($a);
-        return view('posts.post')->with('pos', $pos)->with('user', $author['name']);
+        $comment = comment::where('post_id', $id)->get();
+        $author = User::all();
+        return view('posts.post')->with('pos', $pos)->with('user', $author)->with('comment', $comment);
     }
 
     /**

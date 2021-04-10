@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\post;
+use App\Models\comment;
 
 class commentsController extends Controller
 {
@@ -22,7 +24,10 @@ class commentsController extends Controller
      */
     public function index()
     {
-        return view('comments');
+        $user = auth()->user()->id;
+        $comment = comment::where('post_author_id', $user)->get();
+        $post = post::all();
+        return view('comments')->with('comment', $comment)->with('post', $post);
     }
 
     /**
@@ -33,30 +38,13 @@ class commentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        $comment = new comment;
+        $comment->author_id = auth()->user()->id;
+        $comment->post_author_id = $request['post_author_id'];
+        $comment->content = $request['content'];
+        $comment->post_id = $request['post_id'];
+        $comment->save();
+        return view('dashboard');
     }
 
     /**
@@ -67,6 +55,8 @@ class commentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $comment = comment::find($id);
+        $comment->delete();
+        return view('dashboard');
     }
 }

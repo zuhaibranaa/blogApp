@@ -11,7 +11,7 @@
                 </div>
 
                 <table class="table table-striped table-sm table-responsive-md">
-                    <caption>2 comments</caption>
+                    <caption>{{count($comment)}} comments</caption>
                     <thead>
                         <tr>
                             <th>Content</th>
@@ -22,25 +22,31 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($comment as $comments => $id)
                         <tr>
-                            <td><a href="">hi</a></td>
-                            <td><a href="">hasjdahsud</a></td>
-                            <td><a href="">Zuhaib</a></td>
-                            <td>01/04/2021 20:42:33</td>
+                            <td><a href="">{{$id['content']}}</a></td>
                             <td>
-                                <a href="" class="btn btn-primary btn-sm">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                                </a>
+                                @foreach($post as $pos => $p)
+                                @if($p['id'] == $id['post_id'])
+                                <a href="">{{$p['title']}} </a>
+                                @endif
+                                @endforeach
 
-                                <form method="POST" action="" accept-charset="UTF-8" class="form-inline"
-                                    data-confirm="Are you sure you want to delete this comment?"><input name="_method"
-                                        type="hidden" value="DELETE">
+                            </td>
+                            <td><a href="">Zuhaib</a></td>
+                            <td>{{date_format(date_create($id['posted_at']),'l d F Y g :i a')}}</td>
+                            <td>
+
+                                <form method="POST" action="/comment/{{$id['id']}}" accept-charset="UTF-8"
+                                    class="form-inline" data-confirm="Are you sure you want to delete this comment?">
+                                    <input name="_method" type="hidden" value="DELETE">
                                     @csrf
                                     <button class="btn btn-danger btn-sm" name="submit" type="submit"><i
                                             class="fa fa-trash" aria-hidden="true"></i></button>
                                 </form>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
 
