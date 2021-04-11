@@ -24,9 +24,11 @@
                             @endforeach
                         </a></small>
                     <small class="text-muted">
-                        <i aria-hidden="true" class="fa fa-comments-o"></i> 1
+                        <i aria-hidden="true" class="fa fa-comments-o"></i>
+                        {{count(App\Models\comment::where('post_id',$id['id'])->get())}}
                         <span>
-                            <i aria-hidden="true" class="fa ml-2 fa-heart-o" style="user-select: none;"></i> 0
+                            <i aria-hidden="true" class="fa ml-2 fa-heart-o" style="user-select: none;"></i>
+                            {{count(App\Models\like::where('post_id',$id['id'])->get())}}
                         </span>
                     </small>
                 </p>

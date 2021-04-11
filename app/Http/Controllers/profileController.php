@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\comment;
 use Illuminate\Http\Request;
 use App\Models\post;
 use App\Models\User;
+use App\Models\like;
 use Illuminate\Support\Facades\Hash;
 
 class profileController extends Controller
@@ -51,10 +53,12 @@ class profileController extends Controller
     {
         $user = user::find($id);
         $pos = post::where('author_id', $id)->get();
+        $comment = comment::where('post_author_id', $id)->get();
+        $like = like::where('post_author_id', $id)->get();
         if ($user == NULL) {
             return view('error')->with('message', 'No User Found');
         } else {
-            return view('pprofile')->with('user', $user)->with('pos', $pos);
+            return view('pprofile')->with('user', $user)->with('pos', $pos)->with('comment', $comment)->with('like', $like);
         }
     }
 

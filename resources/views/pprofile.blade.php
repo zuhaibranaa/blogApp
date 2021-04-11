@@ -13,13 +13,13 @@
                                     class="card-subtitle mb-2 text-muted">{{$user['email']}}</small>
                                 <div class="card-text row mt-3">
                                     <div class="col-md-4"><span class="text-muted d-block">Comments</span>
-                                        0
+                                        {{count($comment)}}
                                     </div>
                                     <div class="col-md-4"><span class="text-muted d-block">Posts</span>
                                         {{count($pos)}}
                                     </div>
                                     <div class="col-md-4"><span class="text-muted d-block">Likes</span>
-                                        0
+                                        {{count($like)}}
                                     </div>
                                 </div>
                             </div>
