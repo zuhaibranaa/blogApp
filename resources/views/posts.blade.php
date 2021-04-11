@@ -31,8 +31,12 @@
                             <td><a href="#">{{$id['title']}}</a></td>
                             <td><a href="#">{{Auth::user()->name}}</a></td>
                             <td>{{date_format(date_create($id['posted_at']),'l d F Y g :i a')}}</td>
-                            <td><span class="badge badge-pill badge-secondary">1</span></td>
-                            <td><span class="badge badge-pill badge-secondary">0</span></td>
+                            <td><span class="badge badge-pill badge-secondary">
+                                    {{count(App\Models\comment::where('post_id',$id['id'])->get())}}
+                                </span></td>
+                            <td><span
+                                    class="badge badge-pill badge-secondary">{{count(App\Models\like::where('post_id',$id['id'])->get())}}</span>
+                            </td>
                             <td>
                                 <a href="posts/{{$i = $id['id']}}/edit" class="btn btn-primary btn-sm">
                                     <i class="fa fa-pencil" aria-hidden="true"></i>

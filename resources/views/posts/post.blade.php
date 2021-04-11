@@ -4,7 +4,7 @@
 <div class="col-md-12">
     <div class="bg-white p-3 post-card">
         <h1>{{$pos['title']}}</h1>
-        <div class="mb-3"><small class="text-muted"><a href="/users/{{$pos['author_id']}}">
+        <div class="mb-3"><small class="text-muted"><a href="/profile/{{$pos['author_id']}}">
                     @foreach($user as $use => $author)
                     @if($author['id'] == $pos['author_id'])
                     {{$author['name']}}
