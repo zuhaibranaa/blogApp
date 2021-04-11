@@ -56,7 +56,7 @@ class postsController extends Controller
         $post->posted_at = $request['posted_at'];
         $post->content = $request['body'];
         $post->save();
-        return view('dashboard');
+        return redirect()->to('/posts');;
     }
 
     /**
@@ -105,7 +105,7 @@ class postsController extends Controller
         $post->title = $request['title'];
         $post->content = $request['body'];
         $post->save();
-        return view('/dashboard');
+        return redirect()->to('/posts');
     }
 
     /**

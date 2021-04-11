@@ -44,7 +44,7 @@ class commentsController extends Controller
         $comment->content = $request['content'];
         $comment->post_id = $request['post_id'];
         $comment->save();
-        return view('dashboard');
+        return back();
     }
 
     /**
@@ -57,6 +57,6 @@ class commentsController extends Controller
     {
         $comment = comment::find($id);
         $comment->delete();
-        return view('dashboard');
+        return back();
     }
 }

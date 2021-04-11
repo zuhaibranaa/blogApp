@@ -8,6 +8,13 @@
             <div class="card-body">
                 <div class="page-header d-flex justify-content-between">
                     <h1>Profile</h1>
+                    <form method="POST" action="/profile/{{$user['id']}}">
+                        @csrf
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-danger">
+                            {{ __('Delete Account') }}
+                        </button>
+                    </form>
                 </div>
                 <form method="POST" action="/profile/{{$user['id']}}">
                     <input type="hidden" name="_method" value="PUT">

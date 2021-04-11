@@ -8,6 +8,7 @@ use App\Models\post;
 use App\Models\User;
 use App\Models\like;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 
 class profileController extends Controller
 {
@@ -88,6 +89,12 @@ class profileController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $account = user::find($id);
+        $account->delete();
+        if (user::all() == NULL) {
+            return redirect()->to('/register');
+        } else {
+            return redirect()->to('/');
+        }
     }
 }
